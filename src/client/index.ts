@@ -6,11 +6,7 @@ import {
     printClientHelp,
     printQuit,
 } from "../internal/gamelogic/gamelogic.js";
-import {
-    declareAndBind,
-    SimpleQueueType,
-    subscribeJSON,
-} from "../internal/pubsub/consume.js";
+import { SimpleQueueType, subscribeJSON } from "../internal/pubsub/consume.js";
 import {
     ArmyMovesPrefix,
     ExchangePerilDirect,
@@ -43,7 +39,7 @@ async function main() {
 
     const username = await clientWelcome();
     const gs = new GameState(username);
-    const publishCh = await conn.createChannel();
+    const publishCh = await conn.createConfirmChannel();
 
     await subscribeJSON(
         conn,
