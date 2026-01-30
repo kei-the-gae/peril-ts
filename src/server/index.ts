@@ -47,6 +47,7 @@ async function main() {
         console.log("Non-interactive mode: skipping command input.");
         return;
     }
+
     printServerHelp();
 
     while (true) {
